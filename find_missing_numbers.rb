@@ -34,6 +34,38 @@
 #   result
 # end
 
+# solution using range from first to last element then moving missing elements
+# to new array
+#
+# def missing(array)
+#   result = []
+#   (array[0]..array[-1]).each do |num|
+#     result << num unless array.include?(num)
+#   end
+#   result
+# end
+#
+# another version
+#
+# def missing(array)
+#   (array.min..array.max).select { |num| !array.include?(num) }
+# end
+#
+# yet another version, opposite of select
+#
+# def missing(array)
+#   (array.first..array.last).reject { |num| array.include?(num) }
+# end
+#
+# using Array#-, returns array with common elements removed
+# or returns original array with elements of other array removed
+#
+# def missing(array)
+#   (array[0]..array[-1]).to_a - array
+# end
+
+
+
 # using Enumerable#each_cons - iterate through consecutive overlapping sequences
 # for comparison: Enumerable#each_slice - iterates through consecutive
 # non overlapping sequences
@@ -44,9 +76,6 @@ def missing(array)
   end
   result
 end
-
-
-
 
 p missing([-3, -2, 1, 5]) == [-1, 0, 2, 3, 4]
 p missing([1, 2, 3, 4]) == []
